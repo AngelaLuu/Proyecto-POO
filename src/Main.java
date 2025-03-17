@@ -76,7 +76,8 @@ public class Main {
         Vehiculo vehiculoDeseado = null;
 
         for (Vehiculo vehiculo : vehiculos) {
-            if (vehiculo.getModelo().trim().equalsIgnoreCase(modeloDeseado.trim())) {
+            String identificadorVehiculo = vehiculo.getMarca().trim() + " " + vehiculo.getModelo().trim();
+            if (identificadorVehiculo.equalsIgnoreCase(modeloDeseado.trim())) {
                 vehiculoDeseado = vehiculo;
                 break;
             }
@@ -88,6 +89,12 @@ public class Main {
         }
 
         cliente.setVehiculoDeseado(vehiculoDeseado);
+
+        // Mostrar asesores disponibles antes de la selección
+        System.out.println("\nAsesores disponibles:");
+        for (Asesor asesor : concesionario.getAsesores()) {
+            System.out.println("- " + asesor.getNombre());
+        }
 
         // Seleccionar asesor por nombre
         System.out.print("Seleccione el asesor que atenderá al cliente: ");
